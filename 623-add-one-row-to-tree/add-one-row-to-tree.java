@@ -25,21 +25,18 @@ class Solution {
         helper(root,depth-1);
         return root;
     }
-    TreeNode helper(TreeNode root,int d){
-        if(root==null) return null;
-        TreeNode left=helper(root.left,d-1);
-        TreeNode right=helper(root.right,d-1);
+    void helper(TreeNode root,int d){
+        if(root==null) return;
         if(d==1){
+            TreeNode left=root.left;
+            TreeNode right=root.right;
             root.left=new TreeNode(v);
             root.right=new TreeNode(v);
-            if(left!=null) root.left.left=left;
-            if(right!=null) root.right.right=right;
-            
+            root.left.left=left;
+            root.right.right=right;
+            return;
         }
-        else{
-            root.left=left;
-            root.right=right;
-        }
-        return root;
+        helper(root.left,d-1);
+        helper(root.right,d-1);
     }
 }
