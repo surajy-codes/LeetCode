@@ -1,21 +1,17 @@
 class Solution {
     public String convert(String s, int n) {
-        List<List<Character>> lists=new ArrayList<>();
-        for(int i=0;i<n;i++) lists.add(new ArrayList<>());
-
-        int j=0;
-        while(j<s.length()){
-            for(int i=0;i<n && j<s.length();i++,j++){
-                lists.get(i).add(s.charAt(j));
-            }
-            for(int i=n-2;i>0 && j<s.length();i--,j++){
-                lists.get(i).add(s.charAt(j));
-            }
+        if(n==1) return s;
+        StringBuilder[] strs=new StringBuilder[n];
+        for(int i=0;i<n;i++) strs[i]=new StringBuilder();
+        int i=0;
+        boolean flag=false;
+        for(char c : s.toCharArray()){
+            strs[i].append(c);
+            if(i==0 || i==n-1) flag=!flag;
+            i=flag?i+1:i-1;
         }
         StringBuilder ans=new StringBuilder();
-        for(int i=0;i<n;i++){
-            for(char c : lists.get(i)) ans.append(c);
-        }
+        for(StringBuilder st : strs) ans.append(st);
         return ans.toString();
     }
 }
