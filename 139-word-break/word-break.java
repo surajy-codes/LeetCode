@@ -13,7 +13,7 @@ class Solution {
         for(int i=0;i<words.size();i++){
             String str=words.get(i);
             if(s.startsWith(str)) if(helper(s.substring(str.length(),s.length()),words)) {
-                map.put(s.substring(str.length(),s.length()),true);
+                map.put(s,true);
                 return true;
             }
         }
