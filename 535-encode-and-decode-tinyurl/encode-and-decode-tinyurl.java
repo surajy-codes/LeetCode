@@ -1,13 +1,18 @@
 public class Codec {
 
     // Encodes a URL to a shortened URL.
+    String base="http://t/";
+    HashMap<Integer,String> map=new HashMap<>();
+    int id;
     public String encode(String longUrl) {
-        return longUrl;
+        map.put(id,longUrl);
+        return base+id++;        
     }
 
     // Decodes a shortened URL to its original URL.
     public String decode(String shortUrl) {
-        return shortUrl;
+        int k=Integer.parseInt(shortUrl.replace(base,""));
+        return map.get(k);
     }
 }
 
