@@ -13,16 +13,14 @@ class Solution {
         ListNode ans=head;
         ListNode prev=null;
         ListNode curr=head;
-        for(int i=1;i<n;i++){
+        for(int i=0;i<n;i++){
             curr=curr.next;
         }
-        if(curr.next==null) return head.next;//edge case,...
+        if(curr==null) return head.next;//edge case,...
         prev=head;
-        boolean first=false;
         while(curr.next!=null){
             curr=curr.next;
-            if(first) prev=prev.next;
-            first=true;
+            prev=prev.next;
         }
         prev.next=prev.next.next;
         return head;
