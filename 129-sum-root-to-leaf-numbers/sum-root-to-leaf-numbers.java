@@ -19,19 +19,16 @@ class Solution {
         helper(root,0);
         return ans;
     }
-    int helper(TreeNode root,int curr){
-        if(root==null) return 0;
+    void helper(TreeNode root,int curr){
+        if(root==null) return ;
         if(root.left==null && root.right==null){
             curr*=10;
             curr+=root.val;
             ans+=curr;
-            return curr;
         }
-
         curr*=10;
         curr+=root.val;
         helper(root.left,curr);
         helper(root.right,curr);
-        return  curr;
     }
 }
